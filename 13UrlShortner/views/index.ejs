@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortner Project</title>
+</head>
+<body>
+    <h1>URL Shortner Project</h1>
+    <form action="/short" method="post">
+        <label for="longUrl">Paste your URL here</label>
+        <input type="text" name="longUrl" id="longUrl" required>
+        <button type="submit">Shortner</button>
+    </form>
+
+    <!-- shortUrl ek variable hai, to if shortUrl present hoga to hi neeche shortUrl show hoga, wrna hide ho jayega -->
+     
+    <% if(shortUrl) {%> 
+        <p>Short Url : <a href="<%= shortUrl%>" target="_blank"/> 
+        <%= shortUrl%> 
+        </p>
+    <% }%>
+
+</body>
+</html>
