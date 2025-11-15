@@ -16,7 +16,7 @@ export const isAuthenticated = async (req,res,next) =>{
     }
 
     // if token hamare pass aa chuka hai,to usko verify karna hai
-    const decoded = jwt.verify(token , "mysecretkey@123"); 
+    const decoded = jwt.verify(token , process.env.JWT); 
 
     // dekh lo decoded mai aa kya raha hai
     console.log("Token data" , decoded);

@@ -64,7 +64,7 @@ export const login = async (req,res) => {
     }
     else{
         // jwt
-        const token = jwt.sign({userId : user._id} , "mysecretkey@123" ,{ expiresIn: "1h" } )
+        const token = jwt.sign({userId : user._id} , process.env.JWT ,{ expiresIn: "1h" } )
 
         res.json({
             message:`Welcome ${user.name}`,
@@ -72,5 +72,4 @@ export const login = async (req,res) => {
             success:true
         })
     }
-
 }
