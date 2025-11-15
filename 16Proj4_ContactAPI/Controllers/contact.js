@@ -34,7 +34,7 @@ export const newContact = async (req , res) => {
     }
 
     // agr saare fields de diye to save kara do db mai
-    let saveContact = await Contact.create({name,email,phone,type});
+    let saveContact = await Contact.create({name,email,phone,type , user:req.userGlobal});
 
     res.json({
         message : "Contact saved successfully",
@@ -107,3 +107,22 @@ export const deleteContactById = async (req,res) => {
         success : true
     });
 }
+
+// get contact by user id
+export const getUserSpecificData = async (req , res) => {
+    const id = req.params.id 
+    const userId = await Contact.find({user:id});
+    if(!userId){
+        return res.json({
+            message : "No contact exists with this id",
+            success : false
+        }) 
+    }
+
+    // agr data mil jaye to
+    res.json({
+        message : "User specific contact is fetched",
+        userId : userId,
+        success : true
+    });
+}   

@@ -1,5 +1,5 @@
 import express from 'express'
-import {deleteContactById, getAllContact, getContactById, newContact, updateContactById} from '../Controllers/contact.js'
+import {deleteContactById, getAllContact, getContactById, getUserSpecificData, newContact, updateContactById} from '../Controllers/contact.js'
 
 import { isAuthenticated } from '../Middlewares/auth.js';
 
@@ -29,12 +29,15 @@ router.get('/:id' , getContactById)
 // @api description :- Update contact by id
 // @api method : PUT
 // @api endPoint : /api/contact/id
-router.put('/:id' , updateContactById)
+router.put('/:id' , isAuthenticated ,  updateContactById)
 
 // Delete contact
 // @api description :- Delete contact by id
 // @api method : Delete
 // @api endPoint : /api/contact/id
-router.delete('/:id' , deleteContactById)
+router.delete('/:id'  , isAuthenticated ,  deleteContactById)
 
+
+// get user specific contact
+router.get('/userId/:id' , getUserSpecificData)
 export default router;
